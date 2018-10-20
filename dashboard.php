@@ -14,7 +14,13 @@
       <!-- Font Awesome JS -->
       <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
       <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-   </head>
+    <style>
+    #map {
+    height: 370px;
+    
+    }
+    </style>
+    </head>
    <!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
    <body>
    <div class="container">
@@ -23,7 +29,7 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <button type="button" id="sidebarCollapse" class="btn btn-success">
                 <i class="fas fa-align-left"></i>
                 <span>Menu</span>
                 </button>
@@ -33,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="#">Verifique suas arvores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Page</a>
@@ -42,10 +48,15 @@
                         <a class="nav-link" href="#">Page</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="#">Perfil</a>
                     </li>
+                    
                     </ul>
                 </div>
+                <button type="button" id="sidebarCollapse" class="btn btn-danger">
+                <span>Sair</span>
+                <i class="fa fa-power-off"></i>
+                </button>
             </div>
         </nav>
 </div>
@@ -54,60 +65,24 @@
     </div>
       <div class="wrapper">
       <!-- Sidebar  -->
-      <nav id="sidebar">
-         <div id="dismiss">
-            <i class="fas fa-arrow-left"></i>
-         </div>
-         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-         </div>
-         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-               <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-               <ul class="collapse list-unstyled" id="homeSubmenu">
-                  <li>
-                     <a href="#">Home 1</a>
-                  </li>
-                  <li>
-                     <a href="#">Home 2</a>
-                  </li>
-                  <li>
-                     <a href="#">Home 3</a>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <a href="#">About</a>
-               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-               <ul class="collapse list-unstyled" id="pageSubmenu">
-                  <li>
-                     <a href="#">Page 1</a>
-                  </li>
-                  <li>
-                     <a href="#">Page 2</a>
-                  </li>
-                  <li>
-                     <a href="#">Page 3</a>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <a href="#">Portfolio</a>
-            </li>
-            <li>
-               <a href="#">Contact</a>
-            </li>
-         </ul>
-         <ul class="list-unstyled CTAs">
-            <li>
-               <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-            </li>
-            <li>
-               <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-            </li>
-         </ul>
-      </nav>
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <div class="sidebar-header">
+                <h3>My Tree</h3>
+            </div>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
       <!-- Page Content  -->
       <div class="overlay"></div>
       <br>
@@ -134,7 +109,12 @@
                <div class="card card-signin my-1">
                   <div class="card-body">
                      <h4 style="color: gray" class="card-title text-center">Localização da sua Arvore</h4>
-                  </div>
+                     <div class="row">
+                        <div class="col-12">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    </div>
                </div>
             </div>
          </div>
@@ -166,5 +146,17 @@
              });
          });
       </script>
+<script>
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -19.9492666, lng: -43.9086695},
+      zoom: 17
+    });
+  }
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDODNbbp_hTZszf-IRJRdby4dmwTgAqnLE&callback=initMap"
+    async defer></script>
+
    </body>
 </html>
