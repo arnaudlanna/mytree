@@ -25,7 +25,7 @@
                         <h5 style="color: gray" class="card-title text-center">Entre</h5>
                         <div class="form-label-group">
                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                           <label for="inputEmail">Seu E-Mail</label>
+                           <label for="inputEmail">Seu Email</label>
                         </div>
                         <div class="form-label-group">
                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
