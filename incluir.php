@@ -49,7 +49,7 @@ include_once("config.php");
                         <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Veja as Arvores perto</a>
+                        <a class="nav-link" href="#">Redondeza</a>
                     </li>
                     <li class="nav-item">
                     <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">

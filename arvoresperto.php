@@ -57,7 +57,7 @@ $tree = $stmt->fetchAll();
                         <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Veja as Arvores perto</a>
+                        <a class="nav-link" href="#">Redondeza</a>
                     </li>
                     <li>
                     <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
@@ -151,7 +151,7 @@ $tree = $stmt->fetchAll();
              });
          });
       </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDODNbbp_hTZszf-IRJRdby4dmwTgAqnLE&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDODNbbp_hTZszf-IRJRdby4dmwTgAqnLE&callback=initLocate"
     async defer></script>
 
    </body>

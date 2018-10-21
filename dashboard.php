@@ -57,7 +57,7 @@ $tree = $stmt->fetchAll();
                         <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="arvoresperto.php">Veja as Arvores perto</a>
+                        <a class="nav-link" href="arvoresperto.php">Redondeza</a>
                     </li>
                     <li>
                     <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
