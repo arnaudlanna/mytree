@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("User.php");
 include_once("UserController.php");
 if (isset($_POST["email"]) && isset($_POST["password"])) {

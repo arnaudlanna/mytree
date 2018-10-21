@@ -3,7 +3,6 @@ class UserController {
 
     function __construct()
     {
-        session_start();
         $this->pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
     }
 
@@ -24,8 +23,16 @@ class UserController {
         }
     } 
 
+    function checkBalance($user){
+        $stmt = $this->pdo->prepare("SELECT balance FROM `user` WHERE `id` = ?");
+        $stmt->execute([$user->getId()]);
+        $user = $stmt->fetch();
+
+        return $user["balance"];
+    } 
+
     function validateLogin($user) {
-        $stmt = $this->pdo->prepare("SELECT `name`, `email`, `phone` FROM `user` WHERE `email` = ? AND `password` = ?");
+        $stmt = $this->pdo->prepare("SELECT `id`, `name`, `email`, `phone` FROM `user` WHERE `email` = ? AND `password` = ?");
         $stmt->execute([$user->getEmail(), $user->getPassword()]);
         $user = $stmt->fetchObject();
 
@@ -45,7 +52,6 @@ class UserController {
     {
         $stmt = $this->pdo->prepare("INSERT INTO `user` (`id`, `email`, `password`, `name`, `phone`) VALUES (NULL, ?, ?, ?, ?);");
         $success = $stmt->execute([$user->getEmail(), $user->getPassword(), $user->getName(), $user->getPhone()]);
-        var_dump($success);
         $_SESSION["user"] = $user;
         if ($success) {
             $result = array("result" => "success");

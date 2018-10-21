@@ -1,5 +1,7 @@
 <?php
 include_once("config.php");
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,34 +34,29 @@ include_once("config.php");
     <div id="content">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-success">
-                <i class="fas fa-align-left"></i>
-                <span>Menu</span>
-                </button>
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-align-justify"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Verifique suas arvores</a>
+                    <a class="nav-link" href="dashboard.php">Árvores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="beneficios.php">Veja seus beneficios</a>
+                        <a class="nav-link" href="#">Incluir Árvore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Perfil</a>
                     </li>
-                    
-                    </ul>
-                </div>
-                <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
-                <span>Sair</span>
-                <i class="fa fa-power-off"></i>
-                </a>
+                    <li class="nav-item">
+                    <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
+                    <span>Sair</span>
+                    <i class="fa fa-power-off"></i>
+                    </a>
+                    </li>
             </div>
         </nav>
 </div>
@@ -67,25 +64,6 @@ include_once("config.php");
 </div>
     </div>
       <div class="wrapper">
-      <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-
-            <div class="sidebar-header">
-                <h3>My Tree</h3>
-            </div>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul>
-        </nav>
       <!-- Page Content  -->
       <div class="overlay"></div>
       <br>
@@ -93,34 +71,23 @@ include_once("config.php");
       <br>
       <br>
       <div class="container">
-         <div class="row">
-            <div class="col-sm-4">
-               <div class="card card-signin my-1">
-                  <div class="card-body">
-                     <i id="arrowback" class="fa fa-arrow-left" style="color:gray; position:absolute; font-size:36px; display: none;"></i>
-                     <h4 style="color: gray" class="card-title text-center">Sua Arvore</h4>
-                     <img class="responsive" src="https://www.concordnh.gov/calendar/nature%20icon.png" alt="">
-                     <br>
-                     <br>
-                     <h4 style="color: gray" class="card-subtitle">Nome: </h4>
-                     <h4 style="color: gray" class="card-subtitle">Especie: </h4>
-                     <h4 style="color: gray" class="card-subtitle">Idade: </h4>
-                  </div>
-               </div>
-            </div>
-            <div class="col-sm-8">
-               <div class="card card-signin my-1">
-                  <div class="card-body">
-                     <h4 style="color: gray" class="card-title text-center">Localização da sua Arvore</h4>
-                     <div class="row">
-                        <div class="col-12">
-                            <div id="map"></div>
-                        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-signin my-1">
+                    <div class="card-body">
+                        <form id="form-signin" action="actual_incluir.php" method="post" class="form-signin">
+                            <div class="form-label-group">
+                            <input type="text" name="nickname" class="form-control" placeholder="Nome da Árvore" required>
+                            </div>
+                            <div class="form-label-group">
+                            <input type="text" name="specie" class="form-control" placeholder="Espécie da Árvore" required>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Adicionar Árvore!</button>
+                        </form>
                     </div>
-                    </div>
-               </div>
+                </div>
             </div>
-         </div>
+        </div>
       </div>
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -149,17 +116,5 @@ include_once("config.php");
              });
          });
       </script>
-<script>
-  var map;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -19.9492666, lng: -43.9086695},
-      zoom: 17
-    });
-  }
-</script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDODNbbp_hTZszf-IRJRdby4dmwTgAqnLE&callback=initMap"
-    async defer></script>
-
    </body>
 </html

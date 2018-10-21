@@ -1,22 +1,18 @@
 <?php
 include_once("config.php");
 
-$this->pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
-$stmt = $this->pdo->prepare("SELECT * FROM `tree`");
-$stmt->execute();
+$pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+$stmt = $pdo->prepare("SELECT * FROM `tree` WHERE owner_id = ?");
+$stmt->execute([$_SESSION["user"]->id]);
 $tree = $stmt->fetchAll();
 
-if ($tree) {
-    header('location: ./');
-}
 ?>
-
 <!DOCTYPE html>
 <html>
    <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>MyThree - Adote uma Arvore</title>
+      <title>MyThree - Adote uma Árvore</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -44,7 +40,7 @@ if ($tree) {
             <div class="container-fluid">
                 <button type="button" id="sidebarCollapse" class="btn btn-success">
                 <i class="fas fa-align-left"></i>
-                <span>Menu</span>
+                <span>Minhas Árvores</span>
                 </button>
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-align-justify"></i>
@@ -52,13 +48,13 @@ if ($tree) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Verifique suas arvores</a>
+                        <a class="nav-link" href="#">Árvores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="incluir.php">Incluir Árvore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Perfil</a>
@@ -88,12 +84,17 @@ if ($tree) {
             </div>
 
             <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
+            <?php
+            if($tree){
+                foreach($tree as $row){
+                echo "  <li>
+                            <a href=\"./dashboard.php?tree=" . $row["id"] . "\" class=\"article\">" . $row["nickname"] . "</a>
+                        </li>";
+                }
+            } else {
+                echo "<li> <a class=\"article\">Que pena, você não tem nenhuma árvore ainda.</a></li>";
+            }
+            ?>
             </ul>
         </nav>
       <!-- Page Content  -->
@@ -103,17 +104,25 @@ if ($tree) {
       <br>
       <br>
       <div class="container">
-         <div class="row">
-            <div class="col-sm-12">
-               <div class="card card-signin my-1">
-                  <div class="card-body">
-                     <h4 style="color: gray" class="card-title text-center">Voce não possui uma arvore</h4>
-                    </div>
-               </div>
-            </div>
-         </div>
+        <?php
+            if($tree){
+                if(isset($_GET["tree"])){
+                    $treeid = $_GET["tree"];
+                    $stmt = $pdo->prepare("SELECT * FROM `tree` WHERE owner_id = ? AND id = ?");
+                    $stmt->execute([$_SESSION["user"]->id, $treeid]);
+                    $tree = $stmt->fetch();
+                }
+                else{
+                    $firsttree = reset($tree);
+                    $tree = $tree[0];
+                }
+                include_once("arvore.php");
+            }
+            else{
+                include_once("sem_arvores.php");
+            }
+        ?>
       </div>
-      
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <!-- Popper.JS -->
@@ -141,17 +150,8 @@ if ($tree) {
              });
          });
       </script>
-<script>
-  var map;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -19.9492666, lng: -43.9086695},
-      zoom: 17
-    });
-  }
-</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDODNbbp_hTZszf-IRJRdby4dmwTgAqnLE&callback=initMap"
     async defer></script>
 
    </body>
-</html>
+</html

@@ -1,15 +1,14 @@
 <?php
-   //include_once("config.php");
-   
-   //$this->pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
-   //$stmt = $this->pdo->prepare("SELECT * FROM `tree`");
-   //$stmt->execute();
-   //$tree = $stmt->fetchAll();
-   
-   //if ($tree) {
-   //  header('location: ./');
-   //}
-   ?>
+    include_once("config.php");
+    include_once("api/CheckBalance.php"); 
+    $balchk = new CheckBalance;
+    $bal = $balchk->do();
+
+    $pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+    $stmt = $pdo->prepare("SELECT * FROM `benefits` INNER JOIN partners ON partners.id = partner_id");
+    $stmt->execute();
+    $benefits = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -44,60 +43,36 @@
                <div id="content">
                   <nav class="navbar navbar-expand-lg">
                      <div class="container-fluid">
-                        <button type="button" id="sidebarCollapse" class="btn btn-success">
-                        <i class="fas fa-align-left"></i>
-                        <span>Menu</span>
-                        </button>
                         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                           <ul class="nav navbar-nav ml-auto">
-                              <li class="nav-item active">
-                                 <a class="nav-link" href="dashboard2.php">Verifique suas arvores</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#">Page</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#">Page</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#">Perfil</a>
-                              </li>
-                              <li class="nav-item">
-                              <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
-                        <span>Sair</span>
-                        <i class="fa fa-power-off"></i>
-                        </a>
-                  
-                              </li>
-                           </ul>
-                        
-                          
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="dashboard.php">Árvores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="incluir.php">Incluir Árvore</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Benefícios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
+                                <span>Sair</span>
+                                <i class="fa fa-power-off"></i>
+                                </a>
+                                </li>
+                            </ul>         
                   </nav>
                </div>
             </div>
          </div>
       </div>
       <div class="wrapper">
-         <!-- Sidebar  -->
-         <nav id="sidebar">
-            <div id="dismiss">
-               <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="sidebar-header">
-               <h3>My Tree</h3>
-            </div>
-            <ul class="list-unstyled CTAs">
-               <li>
-                  <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-               </li>
-               <li>
-                  <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-               </li>
-            </ul>
-         </nav>
          <!-- Page Content  -->
          <div class="overlay"></div>
          <br>
@@ -118,55 +93,19 @@
                            <p style='color: gray;'>Suas Moedas obtidas</p>
                         </div>
                         <div class='col-sm-3'>
-                           <button type="button" class="btn btn-outline-success" disabled>5 Moedas Verdes</button>
+                           <button type="button" class="btn btn-outline-success" disabled><?php echo $bal ?> Moedas Verdes</button>
                         </div>
                      </div> 
                     </div>
                   </div>
-                  <br>
-                  <br>
                </div>
             </div>
          </div>
       </div>
       
       <?php
-         for ($i = 1; ; $i++) {
-             if ($i > 4) {
-                 break;
-             }
-             $name = "Uber";
-             echo "<div class='container'>
-             <div class='row'>
-             <div class='col-sm-12'>
-                 <div class='card card-signin my-1'>
-                     <div class='card-body'>
-                      <center>
-                        <a>
-                        <img style='height: 80px' src='https://seeklogo.com/images/U/uber-logo-2BB8EC4342-seeklogo.com.png' alt=''>
-                        <p style='color: gray; font-size: 28px;'>Uber</p>
-                        </a>
-                        </center>
-
-
-                         <div class='row'>
-                         <div class='col-sm-7'>
-                         <p style='color: gray;'>Desconto em viagem</p>
-                         </div>
-                         <div class='col-sm-3'>
-                         <p style='color: gray;'>8 Moedas Verdes</p>
-                         </div>
-                         <div class='col-sm-2'>
-                         <button class='btn btn-success'>Adiquira beneficio</button>
-                         </div>
-                         </div>
-                     </div>
-                     <br>
-                     <br>
-                 </div>
-             </div>
-             </div>
-         </div>";
+         foreach($benefits as $benefit){
+            include("beneficio.php");
          }
          ?>
       <!-- jQuery CDN - Slim version (=without AJAX) -->
