@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+$pdo = new PDO(SERVER, USER, PASSWORD);
 $stmt = $pdo->prepare("SELECT * FROM `tree` WHERE owner_id = ?");
 $stmt->execute([$_SESSION["user"]->id]);
 $trees = $stmt->fetchAll();

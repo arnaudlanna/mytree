@@ -1,7 +1,7 @@
 <?php
 include_once("config.php");
 include_once("api/CheckBalance.php");
-$pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+$pdo = new PDO(SERVER, USER, PASSWORD);
 $specie = $_POST["specie"];
 $nickname = $_POST["nickname"];
 $latitude = $_POST["latitude"];

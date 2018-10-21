@@ -1,7 +1,7 @@
 <?php
 include_once("config.php");
 
-$pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+$pdo = new PDO(SERVER, USER, PASSWORD);
 $stmt = $pdo->prepare("SELECT * FROM `tree` WHERE owner_id = ?");
 $stmt->execute([$_SESSION["user"]->id]);
 $tree = $stmt->fetchAll();
@@ -48,7 +48,7 @@ $tree = $stmt->fetchAll();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Árvores</a>
+                        <a class="nav-link" href="dashboard.php">Árvores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="incluir.php">Incluir Árvore</a>
@@ -57,7 +57,7 @@ $tree = $stmt->fetchAll();
                         <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Redondeza</a>
+                        <a class="nav-link" href="arvoresperto.php">Redondeza</a>
                     </li>
                     <li>
                     <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">

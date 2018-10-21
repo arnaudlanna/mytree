@@ -4,7 +4,7 @@
     $balchk = new CheckBalance;
     $bal = $balchk->do();
 
-    $pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+    $pdo = new PDO(SERVER, USER, PASSWORD);
     $stmt = $pdo->prepare("SELECT * FROM `benefits` INNER JOIN partners ON partners.id = partner_id");
     $stmt->execute();
     $benefits = $stmt->fetchAll();
@@ -58,7 +58,7 @@
                                     <a class="nav-link" href="#">Benefícios</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Redondeza</a>
+                                    <a class="nav-link" href="arvoresperto.php">Redondeza</a>
                                 </li>
                                 <li class="nav-item">
                                 <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
