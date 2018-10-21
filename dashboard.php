@@ -1,3 +1,6 @@
+<?php
+include_once("config.php");
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -53,10 +56,10 @@
                     
                     </ul>
                 </div>
-                <button type="button" id="sidebarCollapse" class="btn btn-danger">
+                <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
                 <span>Sair</span>
                 <i class="fa fa-power-off"></i>
-                </button>
+                </a>
             </div>
         </nav>
 </div>

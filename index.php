@@ -1,6 +1,6 @@
 <?php
-include_once("config.php");
-if(isset($_SESSION)){
+session_start();
+if(isset($_SESSION["user"])){
     header("location: dashboard.php");
 }
 ?>
@@ -59,8 +59,8 @@ if(isset($_SESSION)){
 <label for="register-inputEmail">Registe seu Email</label>
 </div>
 <div class="form-label-group">
-<input type="text" id="register-inputPassword" class="form-control" placeholder="Password" required>
-<label for="register-inputPassword">Confirme seu Email</label>
+<input type="text" id="register-inputEmailConfirm" class="form-control" placeholder="Password" required>
+<label for="register-inputEmailConfirm">Confirme seu Email</label>
 </div>
 <div class="form-label-group">
 <input type="number" id="register-cellphone" class="form-control" placeholder="Password" required>
@@ -101,11 +101,28 @@ $(document).ready(function(){
             }else if(data=='{"result":"fail"}'){
                 alert(data);
             } else if(data=='{"result":"success"}'){
-                curURL = window.location.href;
-                destURL = curURL + "dashboard.php";
-                window.location.replace(destURL);
+                location.reload();
             } else{
+                location.reload();
+            }
+        });
+    });
+    $("#register-form").submit(function(e){
+        e.preventDefault();
+        var email = $("#register-inputEmail").val();
+        var password = $("#register-password").val();
+        var phone = $("#register-cellphone").val();
+        var name = $("#register-name").val();
+        $.post("api/CreateUser.php",{ email: email, password: password, phone: phone, name: name},
+        function(data) {
+            if(data=='{"result":"error"}') {
                 alert(data);
+            }else if(data=='{"result":"fail"}'){
+                alert(data);
+            } else if(data=='{"result":"success"}'){
+                location.reload();
+            } else{
+                location.reload();
             }
         });
     });

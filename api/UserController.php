@@ -3,6 +3,7 @@ class UserController {
 
     function __construct()
     {
+        session_start();
         $this->pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
     }
 
@@ -40,11 +41,12 @@ class UserController {
         }
     }
 
-    function registerUser($user)
+    function createUser($user)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO user VALUES (NULL , `email` = ? , `password` = ? , `name` = ? , `phone` = ?)");
+        $stmt = $this->pdo->prepare("INSERT INTO `user` (`id`, `email`, `password`, `name`, `phone`) VALUES (NULL, ?, ?, ?, ?);");
         $success = $stmt->execute([$user->getEmail(), $user->getPassword(), $user->getName(), $user->getPhone()]);
-
+        var_dump($success);
+        $_SESSION["user"] = $user;
         if ($success) {
             $result = array("result" => "success");
             $result = json_encode($result);
