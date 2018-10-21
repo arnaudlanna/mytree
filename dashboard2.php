@@ -45,7 +45,7 @@ include_once("config.php");
                         <a class="nav-link" href="#">Verifique suas arvores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="beneficios.php">Veja seus beneficios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Page</a>
