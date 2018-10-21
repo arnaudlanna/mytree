@@ -92,7 +92,7 @@ $tree = $stmt->fetchAll();
                         </li>";
                 }
             } else {
-                echo "<li> <a class=\"article\">Que pena, você não tem nenhuma árvore ainda.</a></li>";
+                echo "<li> <a class=\"article\">Que pena, você não tem uma árvore ainda.</a></li>";
             }
             ?>
             </ul>

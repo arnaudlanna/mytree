@@ -34,5 +34,11 @@
       center: {lat: <?php echo $tree["lat"] ?>, lng: <?php echo $tree["lng"] ?>},
       zoom: 17
     });
+    var marker = new google.maps.Marker({
+    position: {lat: <?php echo $tree["lat"] ?>, lng: <?php echo $tree["lng"] ?>},
+    map: map,
+    title: '<?php echo $tree["nickname"] ?>',
+    icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|42f442"
+    });
   }
 </script>   
