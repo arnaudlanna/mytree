@@ -59,14 +59,15 @@ $tree = $stmt->fetchAll();
                     <li class="nav-item">
                         <a class="nav-link" href="#">Perfil</a>
                     </li>
-                    
-                    </ul>
-                </div>
-                <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
+                    <li>
+                    <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
                 <span>Sair</span>
                 <i class="fa fa-power-off"></i>
                 </a>
-            </div>
+                    </li>
+                    </ul>
+
+
         </nav>
 </div>
 </div>
