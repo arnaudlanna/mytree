@@ -13,4 +13,6 @@ $chkbal = new CheckBalance;
 $bal = $chkbal->do();
 $bal = $bal + 1000;
 $success = $stmt->execute([$bal, $_SESSION["user"]->id]);
-header('location: ./'); 
+$stmt = $pdo->query("SELECT LAST_INSERT_ID()");
+$lastId = $stmt->fetchColumn();
+header('location: ./dashboard.php?tree='.$lastId); 
