@@ -77,6 +77,14 @@ include_once("config.php");
                     <div class="card-body">
                         <form id="form-signin" action="actual_incluir.php" method="post" class="form-signin">
                             <div class="form-label-group">
+                            <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitude" required hidden>
+                            <label for="latitude">Latitude</label>
+                            </div>
+                            <div class="form-label-group">
+                            <input type="text" name="longitude" id="longitude" class="form-control" placeholder="Longitude" required hidden>
+                            <label for="longitude">Longitude</label>
+                            </div>
+                            <div class="form-label-group">
                             <input type="text" name="nickname" id="nickname" class="form-control" placeholder="Nome da Árvore" required>
                             <label for="nickname">Nome da Árvore</label>
                             </div>
@@ -84,6 +92,7 @@ include_once("config.php");
                             <input type="text" name="specie" id="specie" class="form-control" placeholder="Espécie da Árvore" required>
                             <label for="specie">Espécie da Árvore</label>
                             </div>
+                            <center><p style="color: gray;" id="geostatus">Determinando Localização!</p></center>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Adicionar Árvore!</button>
                         </form>
                     </div>
@@ -118,5 +127,28 @@ include_once("config.php");
              });
          });
       </script>
+        <script>
+            function getLocation() {
+                navigator.permissions.query({'name': 'geolocation'})
+                .then( permission => checkPermission(permission.state) )
+                if (navigator.geolocation) {
+                    console.log("oi");
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    $("#geostatus").html("Geolocalização não suportada.");
+                }
+            }
+            function showPosition(position) {
+                $("#latitude").val(position.coords.latitude);
+                $("#longitude").val(position.coords.longitude);
+                $("#geostatus").html("Geolocalização definida com sucesso!");
+            }
+            function checkPermission (permission){
+                if(permission == "denied"){
+                    $("#geostatus").html("Permita o acesso a geolocalização e atualize a página!");
+                }
+            }
+            getLocation();
+        </script>
    </body>
 </html
