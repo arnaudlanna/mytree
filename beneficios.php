@@ -58,7 +58,7 @@
                                     <a class="nav-link" href="#">Benefícios</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Perfil</a>
+                                    <a class="nav-link" href="#">Veja as Arvores perto</a>
                                 </li>
                                 <li class="nav-item">
                                 <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">

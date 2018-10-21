@@ -49,7 +49,7 @@ include_once("config.php");
                         <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
+                        <a class="nav-link" href="#">Veja as Arvores perto</a>
                     </li>
                     <li class="nav-item">
                     <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
@@ -164,7 +164,17 @@ include_once("config.php");
         </button>
       </div>
       <div class="modal-body">
-        ...
+      1 - Escolha um local onde a sua árvore possa crescer livre, sem prejudicar postes calçadas e Construções
+      <hr>
+      2 - Abra uma cova de aproximadamente 40 cm de largura comprimento e profundidade
+      <hr>
+      3 - Coloque sua muda na cova sem o Vaso ou saquinho Cuidado para não prejudicar a raiz
+      <hr>
+      4 - Preencha a cova com terra que foi removida, se preferir misture adubo ou esterco
+      <hr>
+      5 - Use as mãos ou pés para compactar a terra da superfície
+      <hr>
+      6 - Regue sua muda pelo menos três vezes por semana ou no final do dia
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

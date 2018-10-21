@@ -57,7 +57,7 @@ $tree = $stmt->fetchAll();
                         <a class="nav-link" href="beneficios.php">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="arvoresperto.php">Veja as Arvores perto</a>
+                        <a class="nav-link" href="#">Veja as Arvores perto</a>
                     </li>
                     <li>
                     <a href="./api/Logout.php" id="sidebarCollapse" class="btn btn-danger">
@@ -117,7 +117,7 @@ $tree = $stmt->fetchAll();
                     $firsttree = reset($tree);
                     $tree = $tree[0];
                 }
-                include_once("arvore.php");
+                include_once("arvore_todas.php");
             }
             else{
                 include_once("sem_arvores.php");
