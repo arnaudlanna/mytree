@@ -31,8 +31,9 @@
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: <?php echo $tree["lat"] ?>, lng: <?php echo $tree["lng"] ?>},
-      zoom: 17
+        center: {lat: <?php echo $tree["lat"] ?>, lng: <?php echo $tree["lng"] ?>},
+        mapTypeId: 'satellite',
+        zoom: 17
     });
     var marker = new google.maps.Marker({
     position: {lat: <?php echo $tree["lat"] ?>, lng: <?php echo $tree["lng"] ?>},
