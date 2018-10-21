@@ -94,16 +94,34 @@ include_once("config.php");
       <br>
       <div class="container">
          <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-4">
                <div class="card card-signin my-1">
                   <div class="card-body">
-                     <h4 style="color: gray" class="card-title text-center">Voce não possui uma arvore</h4>
+                     <i id="arrowback" class="fa fa-arrow-left" style="color:gray; position:absolute; font-size:36px; display: none;"></i>
+                     <h4 style="color: gray" class="card-title text-center">Sua Arvore</h4>
+                     <img class="responsive" src="https://www.concordnh.gov/calendar/nature%20icon.png" alt="">
+                     <br>
+                     <br>
+                     <h4 style="color: gray" class="card-subtitle">Nome: </h4>
+                     <h4 style="color: gray" class="card-subtitle">Especie: </h4>
+                     <h4 style="color: gray" class="card-subtitle">Idade: </h4>
+                  </div>
+               </div>
+            </div>
+            <div class="col-sm-8">
+               <div class="card card-signin my-1">
+                  <div class="card-body">
+                     <h4 style="color: gray" class="card-title text-center">Localização da sua Arvore</h4>
+                     <div class="row">
+                        <div class="col-12">
+                            <div id="map"></div>
+                        </div>
+                    </div>
                     </div>
                </div>
             </div>
          </div>
       </div>
-      
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <!-- Popper.JS -->
@@ -144,4 +162,4 @@ include_once("config.php");
     async defer></script>
 
    </body>
-</html>
+</html
