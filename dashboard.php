@@ -1,5 +1,14 @@
 <?php
 include_once("config.php");
+
+$this->pdo = new PDO("mysql:host=localhost;dbname=nasa", "root", "");
+$stmt = $this->pdo->prepare("SELECT * FROM `tree`");
+$stmt->execute();
+$tree = $stmt->fetchAll();
+
+if ($tree) {
+    header('location: ./');
+}
 ?>
 <!DOCTYPE html>
 <html>
