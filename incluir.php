@@ -75,6 +75,9 @@ include_once("config.php");
             <div class="col-sm-12">
                 <div class="card card-signin my-1">
                     <div class="card-body">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                     Aprenda a plantar
+                    </button>
                         <form id="form-signin" action="actual_incluir.php" method="post" class="form-signin">
                             <div class="form-label-group">
                             <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitude" required hidden>
@@ -151,4 +154,23 @@ include_once("config.php");
             getLocation();
         </script>
    </body>
+   <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Passo a Passo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Entendido!</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html
