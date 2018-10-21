@@ -77,10 +77,12 @@ include_once("config.php");
                     <div class="card-body">
                         <form id="form-signin" action="actual_incluir.php" method="post" class="form-signin">
                             <div class="form-label-group">
-                            <input type="text" name="nickname" class="form-control" placeholder="Nome da Árvore" required>
+                            <input type="text" name="nickname" id="nickname" class="form-control" placeholder="Nome da Árvore" required>
+                            <label for="nickname">Nome da Árvore</label>
                             </div>
                             <div class="form-label-group">
-                            <input type="text" name="specie" class="form-control" placeholder="Espécie da Árvore" required>
+                            <input type="text" name="specie" id="specie" class="form-control" placeholder="Espécie da Árvore" required>
+                            <label for="specie">Espécie da Árvore</label>
                             </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Adicionar Árvore!</button>
                         </form>
